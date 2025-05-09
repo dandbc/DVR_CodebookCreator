@@ -1,116 +1,95 @@
-# Shotlist Creator & Thumbnail Exporter for DaVinci Resolve
+# Editorial Codebook Generator for DaVinci Resolve Studio
 
-**by Daniel Bañuelos (based on code by Natalia Raz)** | [More tools at dandbc.mx/tools](https://dandbc.mx/tools)
+A DaVinci Resolve Studio script that generates a fully formatted Excel codebook from the current timeline, including clip metadata and thumbnail images.
 
----
-
-## 📋 Overview
-
-This script streamlines the process of creating shotlists and exporting thumbnails directly from **DaVinci Resolve Studio**. It allows editors to:
-
-- Extract markers from the timeline.  
-- Capture still frames as thumbnails.  
-- Export metadata and images to a comprehensive **Excel (.xlsx)** shotlist.
+**Developed by Daniel Bañuelos**  
+🌐 www.dandbc.mx/tools  
+📢 Try before using in professional workflows. Developed using Generative AI.
 
 ---
 
-## 🚀 Features
+## 📦 Features
 
-- **Timeline Marker Extraction**: Gathers all markers from the current timeline.  
-- **Thumbnail Export**: Captures stills from markers and resizes them for the shotlist.  
-- **Metadata Export**: Exports clip metadata (e.g., clip name, timecode, resolution) to Excel.  
-- **Customizable Fields**: Choose which metadata fields to include.  
-- **User-Friendly UI**: Intuitive interface built with **PySide6** for easy interaction.
-
----
-
-## 🛠️ Usage
-
-1. Open **DaVinci Resolve Studio** and load your project.  
-2. Go to **Keyboard Customization** and assign a key for **“Next Marker”** (*Playback > Next Marker (“0”)*). This setup is required once. If you run `shotlist_creator2.py` directly from DaVinci Resolve Studio, you can modify the hotkey in the script and then assign it in the keyboard customization.  
-3. Ensure that the album **stills1** (*in the Color page*) is empty. This is crucial for the script to function correctly.  
-4. Run the script. A dialog box will prompt you to select options such as:  
-   - Deleting stills from the album on the color page.  
-   - Setting the timeline timecode.  
-   - Choosing which metadata to extract.  
-   - Defining the thumbnail size.  
-
-The script will navigate through the timeline markers, capture thumbnails, and export the marker data and stills to an **Excel** file in your chosen folder.
+- GUI for selecting metadata fields, thumbnail size, and frame capture point
+- Accurate thumbnail sizing in Excel
+- Optional deletion of all stills after export
+- Customizable filename and organized subfolder creation
+- Persistent settings saved between sessions
 
 ---
 
-### Running Directly from DaVinci Resolve Studio:
+## 🖥 Requirements
 
-- Copy the file `shotlist_creator2.py` to the **DaVinci Resolve Utility scripts folder**:
+- **DaVinci Resolve Studio** (Free version does not support scripting API features like `GrabStill()`)
+- Python 3.7 or later installed on your system
+- The following Python libraries:
+  - `openpyxl`
+  - `Pillow` (for image resizing)
+  - `tkinter` (usually included with Python)
 
-  - **For macOS:**  
-    `/Library/Application Support/Blackmagic Design/DaVinci Resolve/Fusion/Scripts/Utility/`  
+To install missing dependencies, run:
 
-  - **For Windows:**  
-    `C:\ProgramData\Blackmagic Design\DaVinci Resolve\Fusion\Scripts\Utility\`  
-
-- Ensure the following **Python modules** are installed:
-
-  - `PySide6`  
-  - `pynput`  
-  - `Pillow`  
-  - `xlsxwriter`  
-  - `DaVinciResolveScript` (*comes with DaVinci Resolve Studio*)
+```bash
+pip install openpyxl Pillow
+```
 
 ---
 
-### Additional Tips:
+## 📂 Installation
 
-- For annotations, create a **Paint Node** in the **Fusion page** and add your notes there. *Marker annotations and burn-in information will not be exported.*  
-- The exported file is optimized for size, making it easy to convert to **PDF** or upload to **Google Sheets**.  
-- **macOS Users:**
-  - Ensure you grant **Terminal** accessibility access in **Privacy** settings.  
-  - It’s recommended to launch **DaVinci Resolve Studio** from `Contents-MacOS-Resolve` for better performance.  
-- This script works **only** with the **Studio version** of DaVinci Resolve.  
-- Your **feedback** is invaluable! Share your thoughts or suggestions for improving the script. For **user support** or **script modifications**, feel free to reach out.
+1. Download the script `DB_Codebook_Generator_v2.py` and place it into:
 
----
+   ```
+   C:\ProgramData\Blackmagic Design\DaVinci Resolve\Fusion\Scripts\Edit\
+   ```
 
-## 📄 Sample Excel Output
+2. Restart DaVinci Resolve Studio if it was open.
 
-The exported **Excel** will include:
+3. In Resolve, go to the **Edit page**.
 
-- **Marker Information**: Frame number, timecode, notes.  
-- **Clip Metadata**: Clip name, resolution, codec, and more.  
-- **Thumbnails**: Embedded still images for each marker.
+4. Open the script from the **Workspace > Scripts** menu. Look for `DB_Codebook_Generator_v2`.
 
 ---
 
-## 💡 Notes
+## 🧪 Usage
 
-- Supports both **Windows** and **macOS**.  
-- Uses **PySide6**, **pynput**, and **xlsxwriter** libraries.  
-- Ensure **DaVinci Resolve scripting** is properly configured.
-
----
-
-## 🙏 Acknowledgements
-
-This tool is based on **SHOTLIST CREATOR 2** by **Natalia Raz**. The original script is **donation-based**, so if you find this tool helpful, consider supporting the original creator:
-
-- **Buy on AEscripts**: [aescripts.com/shotlist-creator-for-davinci-resolve/](https://aescripts.com/shotlist-creator-for-davinci-resolve/)  
-- **GitHub Repository**: [github.com/natlrazfx/shotlist_creator2](https://github.com/natlrazfx/shotlist_creator2)
-
----
-
-## ⚖️ Disclaimer
-
-This script was written using **ChatGPT-4o** and adapted by **Daniel Bañuelos**. While care has been taken to ensure functionality, please verify outputs before using them in **critical workflows**.
+1. Open the timeline you want to analyze.
+2. Run the script via `Workspace > Scripts > DB_Codebook_Generator_v2`.
+3. Use the GUI to:
+   - Select metadata fields
+   - Choose thumbnail size and frame capture
+   - Set starting timecode
+4. Choose the root export folder and customize the output filename (optional).
+5. The script will:
+   - Create a subfolder with the XLSX and thumbnails
+   - Embed thumbnails into the Excel file
+   - Save the codebook using your chosen filename
 
 ---
 
-## 👋 About the Author  
+## 📝 Notes & Limitations
 
-**Daniel Bañuelos** — Postproduction Supervisor, Educator, and Tech Enthusiast.  
-- **Website:** [dandbc.mx/tools](https://dandbc.mx/tools)  
-- **LinkedIn:** [linkedin.com/in/danielbanuelos](https://linkedin.com/in/danielbanuelos)  
-- **Email:** dany.b@dandbc.mx  
+- Tested with DaVinci Resolve Studio 18+ on Windows.
+- Must be run from within Resolve using the scripting menu.
+- Uses Resolve’s color page to export thumbnails — do not switch pages while it runs.
+- Stills are deleted from the **current still album** if enabled.
 
 ---
 
-🛠 *Need custom postproduction tools?* — Get in touch via [dany.b@dandbc.mx](mailto:dany.b@dandbc.mx) 🎬🚀
+## 💬 Credits
+
+**Code by Daniel Bañuelos**  
+www.dandbc.mx/tools  
+Feel free to adapt or expand. Attribution appreciated.
+
+---
+
+## ⚠️ Disclaimer
+
+This tool is provided **as-is**. While it has been tested in professional environments, always verify outputs before integrating into production workflows. Developed using Generative AI (ChatGPT-4).
+
+---
+
+## 📄 License
+
+Distributed under the BSD 3-Clause "New" or "Revised" License. See `LICENSE` file for details.
