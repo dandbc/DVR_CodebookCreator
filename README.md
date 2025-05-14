@@ -1,33 +1,36 @@
-# Editorial Codebook Generator for DaVinci Resolve Studio
+# 🎬 DB Codebook Generator for DaVinci Resolve Studio
 
 A DaVinci Resolve Studio script that generates a fully formatted Excel codebook from the current timeline, including clip metadata and thumbnail images.
 
 **Developed by Daniel Bañuelos**  
 🌐 www.dandbc.mx/tools  
+☕ Support the project: [buymeacoffee.com/dandbc](https://buymeacoffee.com/dandbc)  
 📢 Try before using in professional workflows. Developed using Generative AI.
 
 ---
 
 ## 📦 Features
 
-- GUI for selecting metadata fields, thumbnail size, and frame capture point
-- Accurate thumbnail sizing in Excel
-- Optional deletion of all stills after export
-- Customizable filename and organized subfolder creation
-- Persistent settings saved between sessions
+- ✅ GUI to select metadata fields, frame capture mode, thumbnail size and filename
+- ✅ Exports Excel `.xlsx` with embedded thumbnails and customizable metadata fields
+- ✅ Clip color support (via `GetClipColor()`) included
+- ✅ Preferred field ordering + automatic fallback to alphabetical
+- ✅ Auto-deletes stills from gallery (optional)
+- ✅ Persistent user preferences between sessions
+- ✅ Cross-platform: tested on macOS & Windows
 
 ---
 
 ## 🖥 Requirements
 
-- **DaVinci Resolve Studio** (Free version does not support scripting API features like `GrabStill()`)
-- Python 3.7 or later installed on your system
-- The following Python libraries:
+- **DaVinci Resolve Studio** (free version does not support scripting API features like `GrabStill()`)
+- Python 3.7+ installed on your system if running externally
+- The following Python libraries (preinstalled on most systems):
   - `openpyxl`
-  - `Pillow` (for image resizing)
-  - `tkinter` (usually included with Python)
+  - `Pillow`
+  - `tkinter` (usually bundled with Python)
 
-To install missing dependencies, run:
+To install dependencies manually:
 
 ```bash
 pip install openpyxl Pillow
@@ -37,49 +40,70 @@ pip install openpyxl Pillow
 
 ## 📂 Installation
 
-1. Download the script `DB_Codebook_Generator_v2.py` and place it into:
+### 🔧 Option 1 – Manual (recommended for most users)
 
-   ```
-   C:\ProgramData\Blackmagic Design\DaVinci Resolve\Fusion\Scripts\Edit\
-   ```
+1. Copy the script `DB_Codebook_Generator_v2.2.4_FINAL.py` to your Resolve scripts folder:
 
-2. Restart DaVinci Resolve Studio if it was open.
+#### macOS:
+```bash
+/Library/Application Support/Blackmagic Design/DaVinci Resolve/Fusion/Scripts/Edit/
+```
 
-3. In Resolve, go to the **Edit page**.
+#### Windows:
+```bash
+C:\ProgramData\Blackmagic Design\DaVinci Resolve\Support\Fusion\Scripts\Edit\
+```
 
-4. Open the script from the **Workspace > Scripts** menu. Look for `DB_Codebook_Generator_v2`.
+2. Restart DaVinci Resolve Studio.
+
+3. In Resolve, go to:
+   **Workspace > Scripts > Edit > DB_Codebook_Generator_v2.2.4_FINAL**
 
 ---
 
 ## 🧪 Usage
 
 1. Open the timeline you want to analyze.
-2. Run the script via `Workspace > Scripts > DB_Codebook_Generator_v2`.
+2. Launch the script from Resolve’s menu:
+   `Workspace > Scripts > Edit > DB_Codebook_Generator_v2.2.4_FINAL`
 3. Use the GUI to:
    - Select metadata fields
-   - Choose thumbnail size and frame capture
-   - Set starting timecode
-4. Choose the root export folder and customize the output filename (optional).
-5. The script will:
-   - Create a subfolder with the XLSX and thumbnails
-   - Embed thumbnails into the Excel file
-   - Save the codebook using your chosen filename
+   - Choose frame type (first / middle / last)
+   - Set thumbnail size
+   - Customize filename and timeline start TC
+4. The script will:
+   - Create a subfolder named after your timeline and project
+   - Export a `.xlsx` with embedded thumbnails and metadata
+   - Optionally delete stills from the gallery
 
 ---
 
 ## 📝 Notes & Limitations
 
-- Tested with DaVinci Resolve Studio 18+ on Windows.
-- Must be run from within Resolve using the scripting menu.
-- Uses Resolve’s color page to export thumbnails — do not switch pages while it runs.
-- Stills are deleted from the **current still album** if enabled.
+- Must be executed from **within DaVinci Resolve Studio**.
+- Uses Resolve’s Color page to capture thumbnails — avoid switching pages while it runs.
+- Thumbnails and XLSX will be exported into a dedicated subfolder inside your selected folder.
+- Clip color may be empty if not assigned in the timeline.
+- Supports timeline clips only (non-video or offline clips will be skipped).
+
+---
+
+## 🔭 Roadmap
+
+Planned features for `v2.3` and beyond:
+
+- Drag-and-drop reordering of metadata fields
+- Improved UI layout and optional dark mode
+- Save/load custom presets
+- Batch export across multiple timelines
 
 ---
 
 ## 💬 Credits
 
-**Code by Daniel Bañuelos**  
-www.dandbc.mx/tools  
+**Script by Daniel Bañuelos**  
+🌐 www.dandbc.mx/tools  
+☕ [buymeacoffee.com/dandbc](https://buymeacoffee.com/dandbc)  
 Feel free to adapt or expand. Attribution appreciated.
 
 ---
@@ -92,4 +116,4 @@ This tool is provided **as-is**. While it has been tested in professional enviro
 
 ## 📄 License
 
-Distributed under the BSD 3-Clause "New" or "Revised" License. See `LICENSE` file for details.
+Distributed under the BSD 3-Clause "New" or "Revised" License. See `LICENSE.txt` for full terms.
