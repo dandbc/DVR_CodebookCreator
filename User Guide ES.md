@@ -77,7 +77,7 @@ Ve a:
 `Workspace > Scripts > Edit > DB_Codebook_Generator_v2.2.4`
 
 
->[!CAUTION] Atención
+>[!CAUTION] 
 >El script solo funciona en la línea de tiempo activa, así que asegúrate de que la línea de tiempo deseada esté abierta y visible en la página de edición.
 >
 >En la versión 2.2.4, el script solo admite una pista de video a la vez. Si tu línea de tiempo tiene varias pistas, puedes desactivar todas excepto una y correr el script varias veces. Los clips desactivados se ignorarán.
@@ -97,12 +97,12 @@ Aparecerá una ventana del script. Podrás personalizar:
 - **Carpeta de salida**: Selecciona dónde se guardará el archivo `.xlsx` y los thumbnails
 - **Eliminar Stills después de exportar**: Activa esta opción para limpiar la galería de Resolve tras exportar
 
->[!CAUTION] Precaución
+>[!CAUTION] 
 >La opción **"Eliminar Stills después de exportar"** eliminará **todos los stills** de la galería actual, no solo los generados por el script.
 >
 >Para evitar pérdida de información, se recomienda **respaldar tus stills** existentes y crear una **galería dedicada** para este script.
 
-> [!NOTE] Nota
+> [!NOTE] 
 >Los thumbnails se generan a partir de capturas dentro de la línea de tiempo y se incrustan directamente en el archivo Excel.
 >
 >El script guarda automáticamente tu configuración más reciente en:  
@@ -120,7 +120,7 @@ Después de hacer clic en **"Generate Codebook"**, el script te guiará para sel
         `ProjectName_TimelineName_Codebook.xlsx`
 ![[Screenshot 2025-05-19 at 10.00.25.png]]
 
-> [!IMPORTANT] Importante 
+> [!IMPORTANT]  
 > El script no guarda los archivos directamente en la carpeta seleccionada.  
 Crea una **subcarpeta con el nombre del archivo codebook** (sin la extensión `.xlsx`) 
 >
@@ -155,7 +155,7 @@ Después de exportar, el script genera una **subcarpeta** dentro de la ubicació
 - Todos los elementos — incluyendo el `.xlsx` y **thumbnails numerados secuencialmente** (`thumb_0.jpg`, etc.) — están en el **mismo directorio** por conveniencia
 ![[Screenshot 2025-05-19 at 10.01.02.png]]
 
-> [!NOTE] Nota
+> [!NOTE] 
 > Puedes cambiar el nombre o mover esta carpeta después de exportar si lo necesitas.
 
 ---
@@ -248,7 +248,7 @@ Si algo no funciona como esperas, aquí algunas causas comunes y cómo resolverl
 - Revisa la **Consola** de Resolve y la carpeta de logs:
 	- `Help > Reveal Log Folder`
 
->[!NOTE] Nota
+>[!NOTE] 
 > Si sigues teniendo problemas, comparte la salida de consola o logs y contacta soporte.
 
 ___
